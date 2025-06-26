@@ -2,35 +2,40 @@ package com.jpmc.midascore.foundation;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// Use this annotation to ignore any fields in the JSON that don't match fields in the class
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction {
-    private long senderId;
-    private long recipientId;
+    // These are the correct field names for the project
+    private long userId;
+    private long balanceId;
     private float amount;
 
+    // The required no-argument constructor for Jackson
     public Transaction() {
     }
 
-    public Transaction(long senderId, long recipientId, float amount) {
-        this.senderId = senderId;
-        this.recipientId = recipientId;
+    // The constructor used by the producer
+    public Transaction(long userId, long balanceId, float amount) {
+        this.userId = userId;
+        this.balanceId = balanceId;
         this.amount = amount;
     }
 
-    public long getSenderId() {
-        return senderId;
+    // Standard getters and setters
+    public long getUserId() {
+        return userId;
     }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public long getRecipientId() {
-        return recipientId;
+    public long getBalanceId() {
+        return balanceId;
     }
 
-    public void setRecipientId(long recipientId) {
-        this.recipientId = recipientId;
+    public void setBalanceId(long balanceId) {
+        this.balanceId = balanceId;
     }
 
     public float getAmount() {
@@ -43,6 +48,6 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction {senderId=" + senderId + ", recipientId=" + recipientId + ", amount=" + amount + "}";
+        return "Transaction{userId=" + userId + ", balanceId=" + balanceId + ", amount=" + amount + "}";
     }
 }
